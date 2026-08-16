@@ -6,6 +6,12 @@ A self-tuning index advisor built directly into PostgreSQL 19devel. AutoIndex ob
 
 ## How It Works
 
+<p align="center">
+  <img src="docs/architecture.svg" alt="Capture path, advisor worker, and the Ski-Rental rule" width="100%">
+</p>
+
+<sub>Editable source: [`docs/architecture.excalidraw`](docs/architecture.excalidraw) — open at [excalidraw.com](https://excalidraw.com)</sub>
+
 ### The Ski Rental Decision
 
 The central question in automatic indexing is: *when have you seen enough slow queries to justify building an index?* AutoIndex frames this as the classic Ski Rental problem:
@@ -162,6 +168,11 @@ python3 run_benchmark.py
 
 ### Results (Apple M-series, shared_buffers = 128 MB)
 
+<p align="center">
+  <img src="docs/benchmark.svg" alt="Eight queries before and after automatic indexing, with plan transitions" width="100%">
+</p>
+
+
 | Query | Before (ms) | After (ms) | Speedup | Scan change |
 |-------|------------|-----------|---------|-------------|
 | Q1 city equality | 3.795 | 0.455 | **8.3×** | Seq → Index Only |
@@ -189,6 +200,7 @@ Full raw data and per-run statistics are in `benchmark_results.csv`. For complet
 | `demo_guide.md` | 12-step live demo guide with expected outputs and reviewer Q&A |
 | `performance_evaluation.md` | Rigorous analysis of speedups, scan transitions, and write overhead |
 | `report.tex` / `report.pdf` | 5-page project report (LaTeX source + compiled PDF) |
+| `docs/` | README diagrams (`.svg`) + editable Excalidraw sources |
 
 ---
 
